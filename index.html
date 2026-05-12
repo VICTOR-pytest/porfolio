@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Victor Ramos | Backend Developer</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 0;
+      animation: fadeIn 0.8s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .tag {
+      color: #22c55e;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      opacity: 0.9;
+    }
+
+    h1 {
+      font-size: 80px;
+      line-height: 1.1;
+      margin-bottom: 25px;
+      background: linear-gradient(135deg, #fff 0%, #b3b3b3 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    h1 span {
+      color: #22c55e;
+    }
+
+    .description {
+      color: #b3b3b3;
+      line-height: 1.8;
+      font-size: 18px;
+      margin-bottom: 35px;
+      opacity: 0.95;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 16px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-block;
+      cursor: pointer;
+      border: none;
+      font-size: 16px;
+    }
+
+    .btn-green {
+      background: #22c55e;
+      color: #000;
+    }
+
+    .btn-green:hover {
+      background: #4ade80;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4);
+    }
+
+    .btn-outline {
+      border: 2px solid #333;
+      color: white;
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      border-color: #22c55e;
+      color: #22c55e;
+      background: rgba(34, 197, 94, 0.05);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(34, 197, 94, 0.2);
+    }
+
+    /* CARD */
+
+    .info-card {
+      background: rgba(20, 20, 20, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(34, 197, 94, 0.1);
+      border-radius: 25px;
+      padding: 50px;
+      transition: all 0.4s ease;
+    }
+
+    .info-card:hover {
+      border-color: rgba(34, 197, 94, 0.3);
+      box-shadow: 0 10px 40px rgba(34, 197, 94, 0.08);
+    }
+
+    .info-item {
+      margin-bottom: 35px;
+      transition: all 0.3s ease;
+    }
+
+    .info-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .info-item h3 {
+      margin-bottom: 12px;
+      color: #22c55e;
+      font-size: 18px;
+    }
+
+    .info-item p {
+      color: #999;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* TECH */
+
+    section {
+      padding: 120px 0;
+    }
+
+    section:nth-child(even) {
+      background: rgba(30, 30, 30, 0.3);
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 50px;
+      margin-bottom: 80px;
+      background: linear-gradient(135deg, #fff 0%, #22c55e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    .tech-card {
+      background: rgba(20, 20, 20, 0.6);
+      border: 1px solid rgba(34, 197, 94, 0.1);
+      padding: 40px 30px;
+      border-radius: 20px;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      font-weight: 600;
+      color: #999;
+    }
+
+    .tech-card:hover {
+      transform: translateY(-10px);
+      border-color: #22c55e;
+      background: rgba(34, 197, 94, 0.05);
+      color: #22c55e;
+      box-shadow: 0 20px 40px rgba(34, 197, 94, 0.15);
+    }
+
+    /* PROJECTS */
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 35px;
+    }
+
+    .project-card {
+      background: rgba(20, 20, 20, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(34, 197, 94, 0.1);
+      padding: 40px;
+      border-radius: 25px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .project-card:hover {
+      border-color: rgba(34, 197, 94, 0.4);
+      background: rgba(20, 20, 20, 0.9);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(34, 197, 94, 0.2);
+    }
+
+    .project-card h3 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .project-card p {
+      color: #999;
+      line-height: 1.8;
+      margin-bottom: 30px;
+      font-size: 16px;
+    }
+
+    .stack {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .stack span {
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      color: #22c55e;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .stack span:hover {
+      background: rgba(34, 197, 94, 0.2);
+      border-color: #22c55e;
+    }
+
+    /* CONTACT */
+
+    .contact-box {
+      background: rgba(20, 20, 20, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+      border-radius: 30px;
+      padding: 80px 60px;
+      text-align: center;
+      transition: all 0.4s ease;
+    }
+
+    .contact-box:hover {
+      border-color: rgba(34, 197, 94, 0.4);
+      box-shadow: 0 20px 50px rgba(34, 197, 94, 0.1);
+    }
+
+    .contact-box p {
+      color: #999;
+      margin-bottom: 20px;
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .contact-box a {
+      color: #22c55e;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .contact-box a:hover {
+      color: #4ade80;
+      text-decoration: underline;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .hero-content,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 55px;
+      }
+
+      .section-title {
+        font-size: 40px;
+      }
+
+      .info-card {
+        padding: 35px;
+      }
+
+      .contact-box {
+        padding: 50px 30px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 40px;
+      }
+
+      .section-title {
+        font-size: 30px;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+
+  <section class="hero">
+    <div class="container hero-content">
+
+      <div>
+        <p class="tag">Backend Developer</p>
+
+        <h1>
+          Victor <span>Ramos</span>
+        </h1>
+
+        <p class="description">
+          Desenvolvedor Backend focado em Node.js, APIs RESTful e MongoDB.
+          Experiência prática construindo aplicações reais, deployadas
+          em produção e integradas com banco de dados cloud.
+        </p>
+
+        <div class="buttons">
+          <a href="https://github.com/VICTOR-pytest" target="_blank" class="btn btn-green">
+            GitHub
+          </a>
+
+          <a href="https://www.linkedin.com/in/victor-ramos-de-lima-932b59222" target="_blank" class="btn btn-outline">
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <div class="info-card">
+
+        <div class="info-item">
+          <h3>Backend APIs</h3>
+          <p>APIs RESTful com Node.js, Express e MongoDB.</p>
+        </div>
+
+        <div class="info-item">
+          <h3>MongoDB Atlas</h3>
+          <p>Integração cloud e banco de dados NoSQL.</p>
+        </div>
+
+        <div class="info-item">
+          <h3>Deploy Production</h3>
+          <p>Projetos online utilizando Render.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TECH -->
+
+  <section>
+    <div class="container">
+
+      <h2 class="section-title">Tech Stack</h2>
+
+      <div class="tech-grid">
+        <div class="tech-card">Node.js</div>
+        <div class="tech-card">JavaScript</div>
+        <div class="tech-card">Express.js</div>
+        <div class="tech-card">MongoDB</div>
+        <div class="tech-card">REST APIs</div>
+        <div class="tech-card">GitHub</div>
+        <div class="tech-card">Render</div>
+        <div class="tech-card">Postman</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+
+  <section>
+    <div class="container">
+
+      <h2 class="section-title">Projetos</h2>
+
+      <div class="projects-grid">
+
+        <!-- PROJECT 1 -->
+
+        <div class="project-card">
+
+          <h3>User Management API</h3>
+
+          <p>
+            API RESTful completa para gerenciamento de usuários
+            utilizando Node.js, Express e MongoDB Atlas.
+          </p>
+
+          <div class="stack">
+            <span>Node.js</span>
+            <span>Express</span>
+            <span>MongoDB</span>
+            <span>EJS</span>
+          </div>
+
+          <div class="buttons">
+            <a href="https://apiusers-k1fd.onrender.com" target="_blank" class="btn btn-green">
+              Live Demo
+            </a>
+
+            <a href="https://github.com/VICTOR-pytest/apiusers" target="_blank" class="btn btn-outline">
+              GitHub
+            </a>
+          </div>
+
+        </div>
+
+        <!-- PROJECT 2 -->
+
+        <div class="project-card">
+
+          <h3>Task Management API</h3>
+
+          <p>
+            Sistema backend para gerenciamento de tarefas
+            com CRUD completo e arquitetura REST.
+          </p>
+
+          <div class="stack">
+            <span>Node.js</span>
+            <span>Express</span>
+            <span>MongoDB</span>
+            <span>REST API</span>
+          </div>
+
+          <div class="buttons">
+            <a href="https://api-task-5.onrender.com" target="_blank" class="btn btn-green">
+              Live Demo
+            </a>
+
+            <a href="https://github.com/VICTOR-pytest/api-task" target="_blank" class="btn btn-outline">
+              GitHub
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+
+  <section>
+    <div class="container">
+
+      <div class="contact-box">
+
+        <h2 class="section-title">Vamos trabalhar juntos</h2>
+
+        <p>✅ Disponível para oportunidades como Backend Developer Jr.</p>
+
+        <br>
+
+        <p>
+          📧
+          <a href="mailto:victorramosbk69@gmail.com">victorramosbk69@gmail.com</a>
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+</body>
+
+</html>
